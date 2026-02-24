@@ -1,8 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@600;700&display=swap');
-
   html, body, #root {
     min-height: 100vh;
     width: 100%;
@@ -42,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     margin-top: 0;
+    text-align: center;
   }
 
   p {

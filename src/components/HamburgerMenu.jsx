@@ -43,16 +43,17 @@ const HamburgerBar = styled.span`
   background: #b76e79;
   border-radius: 2px;
   transition: 0.3s;
+  position: relative;
 `;
 
 const MobileNav = styled.nav`
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 64px;
+  top: 140px;
   left: 0;
   width: 100%;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 140px);
   background: #fff;
   z-index: 1000;
   opacity: ${({ open }) => (open ? 1 : 0)};
@@ -66,16 +67,35 @@ const MobileNav = styled.nav`
 
 const MobileNavLogo = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 1.5rem;
+  gap: 0.5rem;
+`;
+
+const MobileLogoLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  gap: 0.5rem;
 `;
 
 const MobileLogoImg = styled.img`
-  max-height: 48px;
+  max-height: 120px;
   width: auto;
   object-fit: contain;
   display: block;
+`;
+
+const MobileSiteName = styled.span`
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  letter-spacing: 0.5px;
 `;
 
 const MobileNavLink = styled(NavLink)`
@@ -126,17 +146,20 @@ function HamburgerMenu() {
           aria-controls="mobile-nav-menu"
           onClick={() => setOpen((o) => !o)}
         >
-          <HamburgerBar style={open ? { transform: 'translateY(8px) rotate(45deg)' } : {}} />
+          <HamburgerBar style={open ? { transform: 'translateY(13.5px) rotate(45deg)' } : {}} />
           <HamburgerBar style={open ? { opacity: 0 } : {}} />
-          <HamburgerBar style={open ? { transform: 'translateY(-8px) rotate(-45deg)' } : {}} />
+          <HamburgerBar style={open ? { transform: 'translateY(-13.5px) rotate(-45deg)' } : {}} />
         </HamburgerButton>
       </HamburgerMenuWrapper>
       <MobileNav id="mobile-nav-menu" open={open} aria-hidden={!open}>
         {open && (
           <>
-            <MobileNavLogo>
-              <MobileLogoImg src={logo} alt="Uniquely United Forever logo" />
-            </MobileNavLogo>
+{/*             <MobileNavLogo>
+              <MobileLogoLink to="/" onClick={() => setOpen(false)} aria-label="Home - Uniquely United Forever">
+                <MobileLogoImg src={logo} alt="Uniquely United Forever logo" />
+                <MobileSiteName>Uniquely United Forever</MobileSiteName>
+              </MobileLogoLink>
+            </MobileNavLogo> */}
             <MobileNavLink to="/weddings" onClick={() => setOpen(false)}>Weddings</MobileNavLink>
             <MobileNavLink to="/vow-renewals" onClick={() => setOpen(false)}>Vow-Renewals</MobileNavLink>
             <MobileNavLink to="/contact" onClick={() => setOpen(false)}>Contact</MobileNavLink>

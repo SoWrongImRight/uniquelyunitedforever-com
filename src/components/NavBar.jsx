@@ -9,7 +9,7 @@ import HamburgerMenu from './HamburgerMenu';
 const Nav = styled.nav`
   background: #fff;
   border-bottom: 1px solid #eee;
-  height: 64px;
+  height: 140px;
   display: flex;
   align-items: center;
   font-family: 'Playfair Display', serif;
@@ -23,7 +23,7 @@ const NavContent = styled.div`
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 1.5rem;
-  height: 48px;
+  height: 120px;
   width: 100%;
 `;
 
@@ -61,8 +61,8 @@ const HomeTextLink = styled(Link)`
 `;
 
 const Logo = styled.img`
-  max-height: 40px;
-  max-width: 120px;
+  max-height: 200px;
+  max-width: 600px;
   width: auto;
   height: auto;
   display: block;
@@ -89,10 +89,10 @@ const StyledNavLink = styled(NavLink)`
   text-decoration: none;
   color: #333;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-family: 'Playfair Display', serif;
   letter-spacing: 0.5px;
-  padding: 2px 8px;
+  padding: 4px 12px;
   border-radius: 6px;
   border: none;
   box-shadow: none;
@@ -118,7 +118,7 @@ function NavBar() {
         <LogoLink to="/" aria-label="Home">
           <Logo src={logo} alt="Uniquely United Forever logo" />
         </LogoLink>
-        <HomeTextLink to="/">Uniquely United Forever</HomeTextLink>
+        {/* <HomeTextLink to="/">Uniquely United Forever</HomeTextLink> */}
         <NavLinks>
           <NavItem><StyledNavLink to="/weddings">Weddings</StyledNavLink></NavItem>
           <NavItem><StyledNavLink to="/vow-renewals">Vow-Renewals</StyledNavLink></NavItem>

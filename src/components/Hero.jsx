@@ -95,7 +95,9 @@ const HeroText = styled.p`
 `;
 
 const HeroCTA = styled(Link)`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: #b76e79;
   color: #fff;
   font-family: 'Playfair Display', serif;

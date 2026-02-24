@@ -1,39 +1,32 @@
-
-
-import styled from 'styled-components';
-
-const Container = styled.div`
-  max-width: 750px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
-`;
-
-const Header = styled.header`
-  margin-bottom: 2rem;
-`;
-
-const Title = styled.h2`
-  color: #b76e79;
-  letter-spacing: 2px;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 1.3rem;
-`;
-
-const Section = styled.section`
-  margin-bottom: 2rem;
-`;
+import { PageLayout, PageSection } from "../components/PageLayout";
+import Testimonials from "../components/Testimonials";
+import { testimonials } from "../content/siteContent";
 
 function WeddingsPage() {
   return (
-    <Container>
-      <Header>
-        <Title>Weddings</Title>
-      </Header>
-      <Section>
-        <p>You may choose to exchange vows in the midst of a fragrant botanical garden or an elegant country club. Perhaps a private residence is your wish. Maybe it’s a public park or that lovely little chapel/gazebo. Regardless of the ceremony location, style or size, my promise to you is this... I will handle your special day with competence & care… for both you and your attending guests.</p>
-      </Section>
-    </Container>
+    <PageLayout
+      title="Weddings"
+      subtitle="Any location. Any style. Competence, care, and a ceremony that feels like you."
+      narrow
+    >
+      <PageSection>
+        <p>
+          You may choose to exchange vows in the midst of a fragrant botanical
+          garden or an elegant country club. Perhaps a private residence is your
+          wish. Maybe it’s a public park or that lovely little chapel / gazebo.
+        </p>
+        <p>
+          Regardless of the ceremony location, style or size, my promise to you
+          is this: I will handle your special day with competence &amp; care —
+          for both you and your attending guests.
+        </p>
+      </PageSection>
+
+      <PageSection>
+        <h3 style={{ marginTop: 0 }}>Kind words from couples and families</h3>
+        <Testimonials items={testimonials} />
+      </PageSection>
+    </PageLayout>
   );
 }
 

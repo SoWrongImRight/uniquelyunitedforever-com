@@ -2,10 +2,9 @@
 
 
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from '../assets/uuf-logo.jpg';
 
 const HamburgerMenuWrapper = styled.div`
   display: none;
@@ -124,6 +123,8 @@ const MobileNavLink = styled(NavLink)`
 
 function HamburgerMenu() {
   const [open, setOpen] = useState(false);
+  const buttonRef = useRef(null);
+  const firstLinkRef = useRef(null);
 
   // Prevent background scroll when menu is open
   useEffect(() => {
@@ -137,6 +138,34 @@ function HamburgerMenu() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) {
+      buttonRef.current?.focus();
+      return undefined;
+    }
+
+    const rafId = window.requestAnimationFrame(() => {
+      firstLinkRef.current?.focus();
+    });
+
+    return () => window.cancelAnimationFrame(rafId);
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) {
+      return undefined;
+    }
+
+    function onKeyDown(event) {
+      if (event.key === 'Escape') {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
   return (
     <>
       <HamburgerMenuWrapper>
@@ -145,13 +174,14 @@ function HamburgerMenu() {
           aria-expanded={open}
           aria-controls="mobile-nav-menu"
           onClick={() => setOpen((o) => !o)}
+          ref={buttonRef}
         >
           <HamburgerBar style={open ? { transform: 'translateY(13.5px) rotate(45deg)' } : {}} />
           <HamburgerBar style={open ? { opacity: 0 } : {}} />
           <HamburgerBar style={open ? { transform: 'translateY(-13.5px) rotate(-45deg)' } : {}} />
         </HamburgerButton>
       </HamburgerMenuWrapper>
-      <MobileNav id="mobile-nav-menu" open={open} aria-hidden={!open}>
+      <MobileNav id="mobile-nav-menu" open={open} aria-hidden={!open} aria-label="Mobile">
         {open && (
           <>
 {/*             <MobileNavLogo>
@@ -160,8 +190,14 @@ function HamburgerMenu() {
                 <MobileSiteName>Uniquely United Forever</MobileSiteName>
               </MobileLogoLink>
             </MobileNavLogo> */}
-            <MobileNavLink to="/weddings" onClick={() => setOpen(false)}>Weddings</MobileNavLink>
-            <MobileNavLink to="/vow-renewals" onClick={() => setOpen(false)}>Vow-Renewals</MobileNavLink>
+            <MobileNavLink
+              to="/weddings"
+              onClick={() => setOpen(false)}
+              ref={firstLinkRef}
+            >
+              Weddings
+            </MobileNavLink>
+            <MobileNavLink to="/vow-renewals" onClick={() => setOpen(false)}>Vow Renewals</MobileNavLink>
             <MobileNavLink to="/contact" onClick={() => setOpen(false)}>Contact</MobileNavLink>
           </>
         )}

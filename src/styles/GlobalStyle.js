@@ -32,7 +32,11 @@ const GlobalStyle = createGlobalStyle`
   }
   a:hover, a:focus {
     color: #8a4a56;
-    outline: none;
+  }
+
+  a:focus-visible {
+    outline: 2px solid #b76e79;
+    outline-offset: 2px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -65,7 +69,11 @@ const GlobalStyle = createGlobalStyle`
     border-color: #8a4a56;
     background: #f9f6f7;
     color: #8a4a56;
-    outline: none;
+  }
+
+  button:focus-visible {
+    outline: 2px solid #b76e79;
+    outline-offset: 2px;
   }
 
   main {

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
@@ -30,7 +31,58 @@ const Section = styled.section`
   margin-bottom: 2rem;
 `;
 
-export function PageLayout({ title, subtitle, children, narrow }) {
+function ensureMetaTag(name) {
+  let tag = document.head.querySelector(`meta[name="${name}"]`);
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute("name", name);
+    document.head.appendChild(tag);
+  }
+  return tag;
+}
+
+function ensurePropertyTag(property) {
+  let tag = document.head.querySelector(`meta[property="${property}"]`);
+  if (!tag) {
+    tag = document.createElement("meta");
+    tag.setAttribute("property", property);
+    document.head.appendChild(tag);
+  }
+  return tag;
+}
+
+function ensureCanonicalLink() {
+  let link = document.head.querySelector('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+  return link;
+}
+
+export function PageLayout({ title, subtitle, metaDescription, children, narrow }) {
+  useEffect(() => {
+    if (title) {
+      const fullTitle = `${title} | Uniquely United Forever`;
+      document.title = fullTitle;
+      ensurePropertyTag("og:title").setAttribute("content", fullTitle);
+    }
+
+    if (metaDescription) {
+      ensureMetaTag("description").setAttribute("content", metaDescription);
+      ensurePropertyTag("og:description").setAttribute(
+        "content",
+        metaDescription
+      );
+    }
+
+    const canonical = ensureCanonicalLink();
+    canonical.setAttribute(
+      "href",
+      `${window.location.origin}${window.location.pathname}`
+    );
+  }, [title, metaDescription]);
   return (
     <Container $narrow={narrow}>
       <Header>
@@ -45,6 +97,7 @@ export function PageLayout({ title, subtitle, children, narrow }) {
 PageLayout.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
+  metaDescription: PropTypes.string,
   children: PropTypes.node.isRequired,
   narrow: PropTypes.bool,
 };

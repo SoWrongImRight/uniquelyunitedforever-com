@@ -30,8 +30,9 @@ const List = styled.ul`
 function HomePage() {
   return (
     <PageLayout
-      title="Intro"
-      subtitle="Wedding & vow-renewal officiant service in Orlando, Florida"
+      title="Wedding and Vow Renewal Officiant in Orlando, FL"
+      subtitle="Wedding and vow renewal officiant service in Orlando, Florida"
+      metaDescription="Wedding and vow renewal officiant in Orlando, Florida. Custom ceremonies created with care and decades of experience."
       narrow
     >
       <Hero
@@ -41,6 +42,8 @@ function HomePage() {
         ctaLink="/contact"
         layout="vertical"
         imageAlt="Wedding couple - Uniquely United Forever"
+        imageLoading="eager"
+        imageFetchPriority="high"
       />
 
       <Split>

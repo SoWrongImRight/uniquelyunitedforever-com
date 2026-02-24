@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { PageLayout, PageSection } from "../components/PageLayout";
 
@@ -27,6 +27,10 @@ const Form = styled.form`
   margin-top: 1.25rem;
   display: grid;
   gap: 1rem;
+`;
+
+const TabPanel = styled.div`
+  margin-top: 1rem;
 `;
 
 const Grid2 = styled.div`
@@ -67,6 +71,17 @@ const Textarea = styled.textarea`
 const RadioGroup = styled.div`
   display: grid;
   gap: 0.5rem;
+`;
+
+const Fieldset = styled.fieldset`
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  legend {
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+  }
 `;
 
 const RadioRow = styled.label`
@@ -170,6 +185,8 @@ function buildMailto({ mode, fields }) {
 
 function ContactPage() {
   const [mode, setMode] = useState("wedding");
+  const weddingTabRef = useRef(null);
+  const renewalTabRef = useRef(null);
   const [fields, setFields] = useState({
     brideName: "",
     groomName: "",
@@ -190,6 +207,14 @@ function ContactPage() {
 
   const mailto = useMemo(() => buildMailto({ mode, fields }), [mode, fields]);
 
+  function focusTab(nextMode) {
+    if (nextMode === "wedding") {
+      weddingTabRef.current?.focus();
+    } else {
+      renewalTabRef.current?.focus();
+    }
+  }
+
   function onChange(e) {
     const { name, value } = e.target;
     setFields((prev) => ({ ...prev, [name]: value }));
@@ -200,10 +225,32 @@ function ContactPage() {
     window.location.href = mailto;
   }
 
+  function onTabsKeyDown(e) {
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const nextMode = mode === "wedding" ? "renewal" : "wedding";
+      setMode(nextMode);
+      focusTab(nextMode);
+    }
+
+    if (e.key === "Home") {
+      e.preventDefault();
+      setMode("wedding");
+      focusTab("wedding");
+    }
+
+    if (e.key === "End") {
+      e.preventDefault();
+      setMode("renewal");
+      focusTab("renewal");
+    }
+  }
+
   return (
     <PageLayout
-      title="Let’s Get Started"
+      title="Let's Get Started"
       subtitle="Send your details — we’ll follow up to confirm availability and next steps."
+      metaDescription="Contact Uniquely United Forever to plan your wedding or vow renewal. Share your details and get next steps."
       narrow
     >
       <PageSection>
@@ -214,19 +261,29 @@ function ContactPage() {
         </p>
       </PageSection>
 
-      <Tabs role="tablist" aria-label="Intake type">
+      <Tabs role="tablist" aria-label="Intake type" onKeyDown={onTabsKeyDown}>
         <Tab
           type="button"
+          ref={weddingTabRef}
+          role="tab"
+          id="intake-tab-wedding"
+          aria-controls="intake-panel-wedding"
           $active={mode === "wedding"}
           aria-selected={mode === "wedding"}
+          tabIndex={mode === "wedding" ? 0 : -1}
           onClick={() => setMode("wedding")}
         >
           Wedding
         </Tab>
         <Tab
           type="button"
+          ref={renewalTabRef}
+          role="tab"
+          id="intake-tab-renewal"
+          aria-controls="intake-panel-renewal"
           $active={mode === "renewal"}
           aria-selected={mode === "renewal"}
+          tabIndex={mode === "renewal" ? 0 : -1}
           onClick={() => setMode("renewal")}
         >
           Vow Renewal
@@ -234,7 +291,12 @@ function ContactPage() {
       </Tabs>
 
       <Form onSubmit={onSubmit}>
-        {mode === "wedding" ? (
+        <TabPanel
+          role="tabpanel"
+          id="intake-panel-wedding"
+          aria-labelledby="intake-tab-wedding"
+          hidden={mode !== "wedding"}
+        >
           <Grid2>
             <Field>
               <span>Bride’s full name</span>
@@ -245,7 +307,14 @@ function ContactPage() {
               <Input name="groomName" value={fields.groomName} onChange={onChange} />
             </Field>
           </Grid2>
-        ) : (
+        </TabPanel>
+
+        <TabPanel
+          role="tabpanel"
+          id="intake-panel-renewal"
+          aria-labelledby="intake-tab-renewal"
+          hidden={mode !== "renewal"}
+        >
           <Field>
             <span>Mr./Mrs.</span>
             <Input
@@ -255,7 +324,7 @@ function ContactPage() {
               placeholder="e.g., John & Jane Smith"
             />
           </Field>
-        )}
+        </TabPanel>
 
         <Grid2>
           <Field>
@@ -271,11 +340,11 @@ function ContactPage() {
         <Grid2>
           <Field>
             <span>Date</span>
-            <Input name="date" value={fields.date} onChange={onChange} placeholder="MM/DD/YYYY" required aria-required="true" />
+            <Input name="date" value={fields.date} onChange={onChange} type="date" required aria-required="true" />
           </Field>
           <Field>
             <span>Time</span>
-            <Input name="time" value={fields.time} onChange={onChange} placeholder="e.g., 5:30 PM" required aria-required="true" />
+            <Input name="time" value={fields.time} onChange={onChange} type="time" required aria-required="true" />
           </Field>
         </Grid2>
 
@@ -322,8 +391,8 @@ function ContactPage() {
           </Grid2>
         ) : null}
 
-        <div role="group" aria-labelledby="ceremony-description-label">
-          <h3 id="ceremony-description-label" style={{ margin: "0 0 0.75rem 0" }}>Ceremony Description</h3>
+        <Fieldset>
+          <legend id="ceremony-description-label">Ceremony Description</legend>
           <RadioGroup>
             <RadioRow>
               <input
@@ -367,10 +436,10 @@ function ContactPage() {
               </div>
             </RadioRow>
           </RadioGroup>
-        </div>
+        </Fieldset>
 
-        <div role="group" aria-labelledby="party-size-label">
-          <h3 id="party-size-label" style={{ margin: "0 0 0.75rem 0" }}>Wedding Party Size</h3>
+        <Fieldset>
+          <legend id="party-size-label">Wedding Party Size</legend>
           <RadioGroup>
             <RadioRow>
               <input
@@ -405,7 +474,7 @@ function ContactPage() {
               </div>
             </RadioRow>
           </RadioGroup>
-        </div>
+        </Fieldset>
 
         <Field>
           <span>Comments</span>

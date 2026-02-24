@@ -7,6 +7,7 @@ function WeddingsPage() {
     <PageLayout
       title="Weddings"
       subtitle="Any location. Any style. Competence, care, and a ceremony that feels like you."
+      metaDescription="Wedding officiant services for any location or style. Personalized ceremonies with competence, care, and warmth."
       narrow
     >
       <PageSection>

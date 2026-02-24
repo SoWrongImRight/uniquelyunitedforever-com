@@ -121,7 +121,7 @@ function NavBar() {
         {/* <HomeTextLink to="/">Uniquely United Forever</HomeTextLink> */}
         <NavLinks>
           <NavItem><StyledNavLink to="/weddings">Weddings</StyledNavLink></NavItem>
-          <NavItem><StyledNavLink to="/vow-renewals">Vow-Renewals</StyledNavLink></NavItem>
+          <NavItem><StyledNavLink to="/vow-renewals">Vow Renewals</StyledNavLink></NavItem>
           <NavItem><StyledNavLink to="/contact">Contact</StyledNavLink></NavItem>
         </NavLinks>
         <HamburgerMenu />

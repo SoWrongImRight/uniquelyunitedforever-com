@@ -29,8 +29,9 @@ const Footer = styled.div`
 function VowRenewalsPage() {
   return (
     <PageLayout
-      title="Vow-Renewals"
-      subtitle="Say “I Love You FOREVER” once more with a personal, intimate ceremony."
+      title="Vow Renewals"
+      subtitle='Say "I Love You FOREVER" once more with a personal, intimate ceremony.'
+      metaDescription="Vow renewal ceremonies in Orlando, Florida. Renew your vows with a personal, intimate celebration."
       narrow
     >
       <PageSection>

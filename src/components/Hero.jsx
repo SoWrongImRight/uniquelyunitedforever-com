@@ -70,7 +70,7 @@ const HeroContent = styled.div`
   }
 `;
 
-const HeroTitle = styled.h1`
+const HeroTitle = styled.h2`
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
   font-weight: 700;
@@ -120,12 +120,30 @@ const HeroCTA = styled(Link)`
 `;
 
 
-const Hero = React.memo(({ image, text, ctaText, ctaLink, title, imageAlt, layout = 'split' }) => {
+const Hero = React.memo(({
+  image,
+  text,
+  ctaText,
+  ctaLink,
+  title,
+  imageAlt,
+  imageLoading = 'lazy',
+  imageDecoding = 'async',
+  imageFetchPriority,
+  layout = 'split',
+}) => {
   return (
     <HeroWrapper $layout={layout}>
       {layout === 'vertical' ? (
         <>
-          <HeroImage src={image} alt={imageAlt || 'Hero'} $layout={layout} />
+          <HeroImage
+            src={image}
+            alt={imageAlt || 'Hero'}
+            loading={imageLoading}
+            decoding={imageDecoding}
+            fetchPriority={imageFetchPriority}
+            $layout={layout}
+          />
           <HeroContent>
             {title && <HeroTitle>{title}</HeroTitle>}
             <HeroText>{text}</HeroText>
@@ -139,7 +157,14 @@ const Hero = React.memo(({ image, text, ctaText, ctaLink, title, imageAlt, layou
             <HeroText>{text}</HeroText>
             <HeroCTA to={ctaLink}>{ctaText}</HeroCTA>
           </HeroContent>
-          <HeroImage src={image} alt={imageAlt || 'Hero'} $layout={layout} />
+          <HeroImage
+            src={image}
+            alt={imageAlt || 'Hero'}
+            loading={imageLoading}
+            decoding={imageDecoding}
+            fetchPriority={imageFetchPriority}
+            $layout={layout}
+          />
         </>
       )}
     </HeroWrapper>
@@ -154,6 +179,9 @@ Hero.propTypes = {
   text: PropTypes.node.isRequired,
   ctaText: PropTypes.string.isRequired,
   ctaLink: PropTypes.string.isRequired,
+  imageLoading: PropTypes.oneOf(['eager', 'lazy']),
+  imageDecoding: PropTypes.oneOf(['async', 'auto', 'sync']),
+  imageFetchPriority: PropTypes.oneOf(['high', 'low', 'auto']),
   layout: PropTypes.oneOf(['split', 'vertical']),
 };
 

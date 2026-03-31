@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet-async';
+import { siteConfig } from '../content/siteContent';
 
 const Container = styled.div`
   max-width: ${({ $narrow }) => ($narrow ? '720px' : '900px')};
@@ -43,8 +44,8 @@ export function PageLayout({
   children,
   narrow,
 }) {
-  const fullTitle = `${title} | Uniquely United Forever`;
-  const canonical = `https://uniquelyunitedforever.com${canonicalPath || ''}`;
+  const fullTitle = `${title} | ${siteConfig.name}`;
+  const canonical = `${siteConfig.baseUrl}${canonicalPath || ''}`;
 
   return (
     <>

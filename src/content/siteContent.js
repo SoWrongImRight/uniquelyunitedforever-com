@@ -1,3 +1,25 @@
+export const siteConfig = {
+  name: 'Uniquely United Forever',
+  tagline: 'Custom Wedding & Vow Renewal Ceremonies in Orlando, FL',
+  officiant: 'Rev. Randal Miller',
+  email: 'info@uniquelyunitedforever.com',
+  phone: '',
+  city: 'Orlando',
+  state: 'FL',
+  baseUrl: 'https://uniquelyunitedforever.com',
+};
+
+export const serviceAreas = [
+  'Orlando',
+  'Kissimmee',
+  'Sarasota',
+  'Walt Disney World',
+  'Lake Buena Vista',
+  'Celebration',
+  'Winter Park',
+  'Daytona Beach',
+];
+
 export const testimonials = [
   {
     quote:

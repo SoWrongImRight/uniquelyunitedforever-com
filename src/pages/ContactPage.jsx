@@ -1,8 +1,9 @@
 import { useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { PageLayout, PageSection } from "../components/PageLayout";
+import { siteConfig } from "../content/siteContent";
 
-const CONTACT_EMAIL = "info@uniquelyunitedforever.com";
+const CONTACT_EMAIL = siteConfig.email;
 
 const Tabs = styled.div`
   display: inline-flex;

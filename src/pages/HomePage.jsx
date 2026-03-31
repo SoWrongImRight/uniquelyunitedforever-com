@@ -3,6 +3,7 @@ import styled from "styled-components";
 import homeHero from "../assets/uuf-home-hero.jpg";
 import revPhoto from "../assets/uuf-rm.jpg";
 import { PageLayout, PageSection } from "../components/PageLayout";
+import { serviceAreas } from "../content/siteContent";
 
 const Split = styled.div`
   display: grid;
@@ -110,7 +111,7 @@ function HomePage() {
 
       <PageSection>
         <p style={{ textAlign: 'center', color: '#555', fontSize: '0.95rem' }}>
-          Serving Orlando, Kissimmee, Sarasota, Disney World, and all of Central Florida
+          Serving {serviceAreas.slice(0, 3).join(", ")}, Walt Disney World, and all of Central Florida
         </p>
       </PageSection>
     </PageLayout>

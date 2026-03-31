@@ -10,7 +10,13 @@ const GlobalStyle = createGlobalStyle`
     --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
     --font-ornate: 'Cormorant Garamond', 'Times New Roman', serif;
     --radius: 14px;
+    --page-gutter-mobile: 1rem;
+    --page-gutter-desktop: 1.5rem;
     font-size: clamp(16px, 0.98rem + 0.2vw, 18px);
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
   }
 
   html, body, #root {
@@ -19,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     background: #fff;
-    box-sizing: border-box;
     overflow-x: hidden;
   }
 
@@ -62,6 +67,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0 0 1.2em 0;
     color: var(--color-text);
     font-size: 1.08rem;
+    overflow-wrap: anywhere;
   }
 
   button {
@@ -88,16 +94,20 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    width: 100%;
+    width: min(100%, 900px);
     max-width: 900px;
     margin: 0 auto;
-    padding: 1.5rem 1rem 3rem;
+    padding: 1rem var(--page-gutter-mobile) 2.4rem;
     background: #fff;
+  }
+
+  img {
+    max-width: 100%;
   }
 
   @media (min-width: 600px) {
     main {
-      padding: 2rem 1.5rem 3rem;
+      padding: 2rem var(--page-gutter-desktop) 3rem;
     }
   }
 

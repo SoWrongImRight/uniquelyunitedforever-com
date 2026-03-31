@@ -8,7 +8,11 @@ const HamburgerMenuWrapper = styled.div`
   display: none;
   @media (max-width: 800px) {
     display: block;
-    position: relative;
+    position: absolute;
+    right: var(--page-gutter-mobile);
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 0;
   }
 `;
 
@@ -26,6 +30,10 @@ const HamburgerButton = styled.button`
   z-index: 1001;
   border-radius: 50%;
   transition: background 0.2s;
+  color: var(--color-rose);
+  border: 2px solid rgba(183, 110, 121, 0.88);
+  background: rgba(255, 252, 252, 0.96);
+  box-shadow: 0 8px 18px rgba(77, 47, 54, 0.08);
 
   &:focus-visible {
     outline: 3px solid var(--color-rose);
@@ -36,11 +44,11 @@ const HamburgerButton = styled.button`
 
 const HamburgerBar = styled.span`
   display: block;
-  width: 30px;
-  height: 3.5px;
-  margin: 5px 0;
+  width: 22px;
+  height: 2.5px;
+  margin: 3px 0;
   background: var(--color-rose);
-  border-radius: 2px;
+  border-radius: 999px;
   transition: 0.3s;
   position: relative;
 `;
@@ -121,19 +129,6 @@ const MobileNavLink = styled(NavLink)`
     color: var(--color-rose-dark);
     outline: none;
   }
-`;
-
-const MobileNavHeader = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 1rem 0.5rem;
-`;
-
-const CloseButton = styled.button`
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0.5rem 0.85rem;
-  font-weight: 700;
 `;
 
 function HamburgerMenu() {
@@ -225,9 +220,9 @@ function HamburgerMenu() {
           onClick={() => setOpen((o) => !o)}
           ref={buttonRef}
         >
-          <HamburgerBar style={open ? { transform: 'translateY(13.5px) rotate(45deg)' } : {}} />
+          <HamburgerBar style={open ? { transform: 'translateY(8.5px) rotate(45deg)' } : {}} />
           <HamburgerBar style={open ? { opacity: 0 } : {}} />
-          <HamburgerBar style={open ? { transform: 'translateY(-13.5px) rotate(-45deg)' } : {}} />
+          <HamburgerBar style={open ? { transform: 'translateY(-8.5px) rotate(-45deg)' } : {}} />
         </HamburgerButton>
       </HamburgerMenuWrapper>
       <MobileNav
@@ -251,11 +246,6 @@ function HamburgerMenu() {
                 <MobileSiteName>Uniquely United Forever</MobileSiteName>
               </MobileLogoLink>
             </MobileNavLogo>
-            <MobileNavHeader>
-              <CloseButton type="button" onClick={() => setOpen(false)} aria-label="Close menu">
-                ✕ Close
-              </CloseButton>
-            </MobileNavHeader>
             <MobileNavLink
               to="/weddings"
               onClick={() => setOpen(false)}

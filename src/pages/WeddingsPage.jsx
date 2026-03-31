@@ -6,12 +6,13 @@ import testimonies from "../content/testimonies.json";
 const IntroImage = styled.img`
   width: 100%;
   display: block;
-  border-radius: 20px;
+  border-radius: 18px;
   box-shadow: 0 14px 34px rgba(60, 60, 60, 0.12);
   object-fit: cover;
-  height: 180px;
+  height: 160px;
 
   @media (min-width: 800px) {
+    border-radius: 20px;
     height: 200px;
   }
 `;

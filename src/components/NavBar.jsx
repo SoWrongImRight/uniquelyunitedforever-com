@@ -10,8 +10,12 @@ const Nav = styled.nav`
   display: flex;
   align-items: center;
   font-family: var(--font-serif);
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.8rem;
   backdrop-filter: blur(8px);
+
+  @media (min-width: 800px) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const NavContent = styled.div`
@@ -20,11 +24,16 @@ const NavContent = styled.div`
   justify-content: space-between;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 0.75rem 1.25rem;
+  padding: 0.6rem var(--page-gutter-mobile);
   width: 100%;
 
+  @media (max-width: 800px) {
+    justify-content: center;
+    position: relative;
+  }
+
   @media (min-width: 800px) {
-    padding: 1rem 1.75rem;
+    padding: 1rem var(--page-gutter-desktop);
     min-height: 88px;
   }
 `;
@@ -32,12 +41,16 @@ const NavContent = styled.div`
 const LogoLink = styled(Link)`
   display: flex;
   align-items: center;
-  margin-right: 1rem;
+  margin-right: 0;
   padding: 0.25rem 0;
+
+  @media (max-width: 800px) {
+    margin: 0 auto;
+  }
 `;
 
 const Logo = styled.img`
-  max-width: 120px;
+  max-width: 98px;
   width: auto;
   height: auto;
   display: block;

@@ -33,23 +33,26 @@ function HomePage() {
       title="Wedding and Vow Renewal Officiant in Orlando, FL"
       subtitle="Wedding and vow renewal officiant service in Orlando, Florida"
       metaDescription="Wedding and vow renewal officiant in Orlando, Florida. Custom ceremonies created with care and decades of experience."
+      canonicalPath="/"
       narrow
     >
       <Hero
         image={homeHero}
         text="Every ceremony is uniquely created — with the hope that you remain united for a lifetime… forever."
-        ctaText="Let's get started"
+        ctaText="Plan Your Ceremony"
         ctaLink="/contact"
         layout="vertical"
         imageAlt="Wedding couple - Uniquely United Forever"
         imageLoading="eager"
         imageFetchPriority="high"
+        imageWidth={900}
+        imageHeight={500}
       />
 
       <Split>
         <div>
           <PageSection>
-            <h3 style={{ marginTop: 0 }}>Bride & Groom To Be</h3>
+            <h2 style={{ marginTop: 0, textAlign: 'left' }}>Bride & Groom To Be</h2>
             <p>
               Many questions and decisions await your attention concerning your
               wedding day. My purpose is to assist you in making your wedding
@@ -99,9 +102,17 @@ function HomePage() {
             src={revPhoto}
             alt="Reverend Randal Miller - Uniquely United Forever"
             loading="lazy"
+            width="340"
+            height="460"
           />
         </div>
       </Split>
+
+      <PageSection>
+        <p style={{ textAlign: 'center', color: '#555', fontSize: '0.95rem' }}>
+          Serving Orlando, Kissimmee, Sarasota, Disney World, and all of Central Florida
+        </p>
+      </PageSection>
     </PageLayout>
   );
 }

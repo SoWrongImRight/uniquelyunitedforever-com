@@ -31,7 +31,8 @@ function VowRenewalsPage() {
     <PageLayout
       title="Vow Renewals"
       subtitle='Say "I Love You FOREVER" once more with a personal, intimate ceremony.'
-      metaDescription="Vow renewal ceremonies in Orlando, Florida. Renew your vows with a personal, intimate celebration."
+      metaDescription="Renew your vows in Orlando, Florida with Rev. Randal Miller. Intimate ceremonies for two or a full celebration — personally crafted and deeply meaningful."
+      canonicalPath="/vow-renewals"
       narrow
     >
       <PageSection>
@@ -55,7 +56,7 @@ function VowRenewalsPage() {
       </PageSection>
 
       <PageSection>
-        <h3 style={{ marginTop: 0 }}>A note from a couple</h3>
+        <h2 style={{ marginTop: 0, textAlign: 'left' }}>A note from a couple</h2>
         <Letter>
           <p>{vowRenewalLetter.salutation}</p>
           <p>{vowRenewalLetter.body}</p>

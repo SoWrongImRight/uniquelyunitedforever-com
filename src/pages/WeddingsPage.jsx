@@ -7,7 +7,8 @@ function WeddingsPage() {
     <PageLayout
       title="Weddings"
       subtitle="Any location. Any style. Competence, care, and a ceremony that feels like you."
-      metaDescription="Wedding officiant services for any location or style. Personalized ceremonies with competence, care, and warmth."
+      metaDescription="Rev. Randal Miller performs wedding ceremonies in Orlando and across Florida — botanical gardens, country clubs, Disney World, private residences, and more. Traditional, Non-Denominational, and Civil ceremonies available."
+      canonicalPath="/weddings"
       narrow
     >
       <PageSection>
@@ -24,7 +25,7 @@ function WeddingsPage() {
       </PageSection>
 
       <PageSection>
-        <h3 style={{ marginTop: 0 }}>Kind words from couples and families</h3>
+        <h2 style={{ marginTop: 0, textAlign: 'left' }}>Kind words from couples and families</h2>
         <Testimonials items={testimonials} />
       </PageSection>
     </PageLayout>

@@ -2,7 +2,7 @@ import { useMemo, useRef, useState } from "react";
 import styled from "styled-components";
 import { PageLayout, PageSection } from "../components/PageLayout";
 
-const CONTACT_EMAIL = "info@uniquelyunitedforever.com"; // TODO: update to the correct inbox
+const CONTACT_EMAIL = "info@uniquelyunitedforever.com";
 
 const Tabs = styled.div`
   display: inline-flex;
@@ -116,6 +116,8 @@ const Primary = styled.button`
   cursor: pointer;
   border-radius: 12px;
   padding: 0.85rem 1rem;
+  min-width: 44px;
+  min-height: 44px;
   font-weight: 800;
   background: #b76e79;
   color: #fff;
@@ -187,6 +189,7 @@ function ContactPage() {
   const [mode, setMode] = useState("wedding");
   const weddingTabRef = useRef(null);
   const renewalTabRef = useRef(null);
+  const minDate = new Date().toISOString().split("T")[0];
   const [fields, setFields] = useState({
     brideName: "",
     groomName: "",
@@ -251,8 +254,15 @@ function ContactPage() {
       title="Let's Get Started"
       subtitle="Send your details — we’ll follow up to confirm availability and next steps."
       metaDescription="Contact Uniquely United Forever to plan your wedding or vow renewal. Share your details and get next steps."
+      canonicalPath="/contact"
       narrow
     >
+      <PageSection>
+        <p style={{ fontStyle: "italic", color: "#555", textAlign: "center" }}>
+          "Your ceremony deserves the same care as your relationship." — Rev. Miller
+        </p>
+      </PageSection>
+
       <PageSection>
         <p>
           My purpose is to assist you in making your wedding journey a total
@@ -298,13 +308,25 @@ function ContactPage() {
           hidden={mode !== "wedding"}
         >
           <Grid2>
-            <Field>
-              <span>Bride’s full name</span>
-              <Input name="brideName" value={fields.brideName} onChange={onChange} />
+            <Field htmlFor="field-bride-name">
+              <span id="field-bride-name-label">Bride’s full name</span>
+              <Input
+                id="field-bride-name"
+                name="brideName"
+                aria-labelledby="field-bride-name-label"
+                value={fields.brideName}
+                onChange={onChange}
+              />
             </Field>
-            <Field>
-              <span>Groom’s full name</span>
-              <Input name="groomName" value={fields.groomName} onChange={onChange} />
+            <Field htmlFor="field-groom-name">
+              <span id="field-groom-name-label">Groom’s full name</span>
+              <Input
+                id="field-groom-name"
+                name="groomName"
+                aria-labelledby="field-groom-name-label"
+                value={fields.groomName}
+                onChange={onChange}
+              />
             </Field>
           </Grid2>
         </TabPanel>
@@ -315,10 +337,12 @@ function ContactPage() {
           aria-labelledby="intake-tab-renewal"
           hidden={mode !== "renewal"}
         >
-          <Field>
-            <span>Mr./Mrs.</span>
+          <Field htmlFor="field-renewal-names">
+            <span id="field-renewal-names-label">Mr./Mrs.</span>
             <Input
+              id="field-renewal-names"
               name="renewalNames"
+              aria-labelledby="field-renewal-names-label"
               value={fields.renewalNames}
               onChange={onChange}
               placeholder="e.g., John & Jane Smith"
@@ -327,42 +351,98 @@ function ContactPage() {
         </TabPanel>
 
         <Grid2>
-          <Field>
-            <span>Best email</span>
-            <Input name="email" value={fields.email} onChange={onChange} type="email" autoComplete="email" required aria-required="true" />
+          <Field htmlFor="field-email">
+            <span id="field-email-label">Best email</span>
+            <Input
+              id="field-email"
+              name="email"
+              aria-labelledby="field-email-label"
+              value={fields.email}
+              onChange={onChange}
+              type="email"
+              autoComplete="email"
+              required
+              aria-required="true"
+            />
           </Field>
-          <Field>
-            <span>Phone</span>
-            <Input name="phone" value={fields.phone} onChange={onChange} type="tel" autoComplete="tel" required aria-required="true" />
+          <Field htmlFor="field-phone">
+            <span id="field-phone-label">Phone</span>
+            <Input
+              id="field-phone"
+              name="phone"
+              aria-labelledby="field-phone-label"
+              value={fields.phone}
+              onChange={onChange}
+              type="tel"
+              autoComplete="tel"
+              required
+              aria-required="true"
+            />
           </Field>
         </Grid2>
 
         <Grid2>
-          <Field>
-            <span>Date</span>
-            <Input name="date" value={fields.date} onChange={onChange} type="date" required aria-required="true" />
+          <Field htmlFor="field-date">
+            <span id="field-date-label">Date</span>
+            <Input
+              id="field-date"
+              name="date"
+              aria-labelledby="field-date-label"
+              value={fields.date}
+              onChange={onChange}
+              type="date"
+              min={minDate}
+              required
+              aria-required="true"
+            />
           </Field>
-          <Field>
-            <span>Time</span>
-            <Input name="time" value={fields.time} onChange={onChange} type="time" required aria-required="true" />
+          <Field htmlFor="field-time">
+            <span id="field-time-label">Time</span>
+            <Input
+              id="field-time"
+              name="time"
+              aria-labelledby="field-time-label"
+              value={fields.time}
+              onChange={onChange}
+              type="time"
+              required
+              aria-required="true"
+            />
           </Field>
         </Grid2>
 
-        <Field>
-          <span>Venue</span>
-          <Input name="venue" value={fields.venue} onChange={onChange} required aria-required="true" />
+        <Field htmlFor="field-venue">
+          <span id="field-venue-label">Venue</span>
+          <Input
+            id="field-venue"
+            name="venue"
+            aria-labelledby="field-venue-label"
+            value={fields.venue}
+            onChange={onChange}
+            required
+            aria-required="true"
+          />
         </Field>
 
         {mode === "wedding" ? (
           <Grid2>
-            <Field>
-              <span>Coordinator</span>
-              <Input name="coordinatorName" value={fields.coordinatorName} onChange={onChange} autoComplete="name" />
-            </Field>
-            <Field>
-              <span>Coordinator phone</span>
+            <Field htmlFor="field-coordinator-name">
+              <span id="field-coordinator-name-label">Coordinator</span>
               <Input
+                id="field-coordinator-name"
+                name="coordinatorName"
+                aria-labelledby="field-coordinator-name-label"
+                value={fields.coordinatorName}
+                onChange={onChange}
+                autoComplete="name"
+              />
+            </Field>
+            <Field htmlFor="field-coordinator-phone">
+              <span id="field-coordinator-phone-label">Coordinator phone</span>
+              <Input
+                id="field-coordinator-phone"
                 name="coordinatorPhone"
+                aria-labelledby="field-coordinator-phone-label"
                 value={fields.coordinatorPhone}
                 onChange={onChange}
                 type="tel"
@@ -374,14 +454,23 @@ function ContactPage() {
 
         {mode === "wedding" ? (
           <Grid2>
-            <Field>
-              <span>Photographer</span>
-              <Input name="photographerName" value={fields.photographerName} onChange={onChange} autoComplete="name" />
-            </Field>
-            <Field>
-              <span>Photographer phone</span>
+            <Field htmlFor="field-photographer-name">
+              <span id="field-photographer-name-label">Photographer</span>
               <Input
+                id="field-photographer-name"
+                name="photographerName"
+                aria-labelledby="field-photographer-name-label"
+                value={fields.photographerName}
+                onChange={onChange}
+                autoComplete="name"
+              />
+            </Field>
+            <Field htmlFor="field-photographer-phone">
+              <span id="field-photographer-phone-label">Photographer phone</span>
+              <Input
+                id="field-photographer-phone"
                 name="photographerPhone"
+                aria-labelledby="field-photographer-phone-label"
                 value={fields.photographerPhone}
                 onChange={onChange}
                 type="tel"
@@ -476,20 +565,27 @@ function ContactPage() {
           </RadioGroup>
         </Fieldset>
 
-        <Field>
-          <span>Comments</span>
-          <Textarea name="comments" value={fields.comments} onChange={onChange} />
+        <Field htmlFor="field-comments">
+          <span id="field-comments-label">Comments</span>
+          <Textarea
+            id="field-comments"
+            name="comments"
+            aria-labelledby="field-comments-label"
+            value={fields.comments}
+            onChange={onChange}
+          />
         </Field>
 
         <Actions>
           <Primary type="submit">Open email with intake</Primary>
-          <Secondary href={mailto}>Or click here if email didn’t open</Secondary>
+          <Secondary
+            href={mailto}
+            role="button"
+            aria-label="Open email if button did not work"
+          >
+            Or click here if email didn’t open
+          </Secondary>
         </Actions>
-
-        <p style={{ margin: 0, color: "#666", lineHeight: 1.5 }}>
-          Note: update <strong>CONTACT_EMAIL</strong> in{" "}
-          <code>src/pages/ContactPage.jsx</code> to the correct inbox.
-        </p>
       </Form>
     </PageLayout>
   );

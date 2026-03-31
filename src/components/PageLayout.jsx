@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import PropTypes from "prop-types";
-import styled from "styled-components";
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Helmet } from 'react-helmet-async';
 
 const Container = styled.div`
-  max-width: ${({ $narrow }) => ($narrow ? "720px" : "900px")};
+  max-width: ${({ $narrow }) => ($narrow ? '720px' : '900px')};
   margin: 0 auto;
   padding: 2rem 1rem 3rem;
 `;
@@ -13,12 +13,16 @@ const Header = styled.header`
 `;
 
 const Title = styled.h1`
-  color: #b76e79;
+  color: var(--color-rose);
   letter-spacing: 2px;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 1.3rem;
+  font-size: 1.6rem;
   margin: 0;
+
+  @media (min-width: 800px) {
+    font-size: 2rem;
+  }
 `;
 
 const Subtitle = styled.p`
@@ -31,66 +35,34 @@ const Section = styled.section`
   margin-bottom: 2rem;
 `;
 
-function ensureMetaTag(name) {
-  let tag = document.head.querySelector(`meta[name="${name}"]`);
-  if (!tag) {
-    tag = document.createElement("meta");
-    tag.setAttribute("name", name);
-    document.head.appendChild(tag);
-  }
-  return tag;
-}
+export function PageLayout({
+  title,
+  subtitle,
+  metaDescription,
+  canonicalPath,
+  children,
+  narrow,
+}) {
+  const fullTitle = `${title} | Uniquely United Forever`;
+  const canonical = `https://uniquelyunitedforever.com${canonicalPath || ''}`;
 
-function ensurePropertyTag(property) {
-  let tag = document.head.querySelector(`meta[property="${property}"]`);
-  if (!tag) {
-    tag = document.createElement("meta");
-    tag.setAttribute("property", property);
-    document.head.appendChild(tag);
-  }
-  return tag;
-}
-
-function ensureCanonicalLink() {
-  let link = document.head.querySelector('link[rel="canonical"]');
-  if (!link) {
-    link = document.createElement("link");
-    link.setAttribute("rel", "canonical");
-    document.head.appendChild(link);
-  }
-  return link;
-}
-
-export function PageLayout({ title, subtitle, metaDescription, children, narrow }) {
-  useEffect(() => {
-    if (title) {
-      const fullTitle = `${title} | Uniquely United Forever`;
-      document.title = fullTitle;
-      ensurePropertyTag("og:title").setAttribute("content", fullTitle);
-    }
-
-    if (metaDescription) {
-      ensureMetaTag("description").setAttribute("content", metaDescription);
-      ensurePropertyTag("og:description").setAttribute(
-        "content",
-        metaDescription
-      );
-    }
-
-    const canonical = ensureCanonicalLink();
-    canonical.setAttribute(
-      "href",
-      `${window.location.origin}${window.location.pathname}`
-    );
-  }, [title, metaDescription]);
   return (
-    <Container $narrow={narrow}>
-      <Header>
-        <Title>{title}</Title>
-        {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
-      </Header>
-      {children}
-    </Container>
+    <>
+      <Helmet>
+        <title>{fullTitle}</title>
+        {metaDescription ? <meta name="description" content={metaDescription} /> : null}
+        {metaDescription ? <meta property="og:description" content={metaDescription} /> : null}
+        <meta property="og:title" content={fullTitle} />
+        <link rel="canonical" href={canonical} />
+      </Helmet>
+      <Container $narrow={narrow}>
+        <Header>
+          <Title>{title}</Title>
+          {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+        </Header>
+        {children}
+      </Container>
+    </>
   );
 }
 
@@ -98,6 +70,7 @@ PageLayout.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
   metaDescription: PropTypes.string,
+  canonicalPath: PropTypes.string,
   children: PropTypes.node.isRequired,
   narrow: PropTypes.bool,
 };

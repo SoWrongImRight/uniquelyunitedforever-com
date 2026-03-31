@@ -1,14 +1,12 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
+const Section = styled.section``;
+
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
-
-  @media (max-width: 720px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 const Card = styled.figure`
@@ -23,6 +21,13 @@ const Quote = styled.blockquote`
   margin: 0 0 0.75rem 0;
   color: #222;
   line-height: 1.6;
+`;
+
+const Stars = styled.div`
+  color: #c9a84c;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
 `;
 
 const Footer = styled.figcaption`
@@ -40,17 +45,20 @@ const Location = styled.span`
 
 export default function Testimonials({ items }) {
   return (
-    <Grid>
-      {items.map((t) => (
-        <Card key={`${t.name}-${t.location}`}>
-          <Quote>“{t.quote}”</Quote>
-          <Footer>
-            <span>{t.name}</span>
-            {t.location ? <Location>• {t.location}</Location> : null}
-          </Footer>
-        </Card>
-      ))}
-    </Grid>
+    <Section aria-label="Customer testimonials">
+      <Grid>
+        {items.map((t) => (
+          <Card key={`${t.name}-${t.location}`}>
+            <Stars aria-label="5 stars">★★★★★</Stars>
+            <Quote>“{t.quote}”</Quote>
+            <Footer>
+              <cite>{t.name}</cite>
+              {t.location ? <Location>• {t.location}</Location> : null}
+            </Footer>
+          </Card>
+        ))}
+      </Grid>
+    </Section>
   );
 }
 

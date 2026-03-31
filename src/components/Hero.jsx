@@ -9,9 +9,8 @@ const HeroWrapper = styled.section`
   flex-direction: ${({ $layout }) => $layout === 'vertical' ? 'column' : 'row'};
   align-items: center;
   justify-content: center;
-  min-height: ${({ $layout }) => $layout === 'vertical' ? '420px' : '650px'};
-  max-height: ${({ $layout }) => $layout === 'vertical' ? '600px' : '800px'};
-  height: ${({ $layout }) => $layout === 'vertical' ? 'auto' : '70vh'};
+  min-height: ${({ $layout }) => $layout === 'vertical' ? '420px' : '560px'};
+  height: auto;
   max-width: 1280px;
   margin: 0 auto 2.5rem auto;
   background: #fff;
@@ -26,7 +25,6 @@ const HeroWrapper = styled.section`
   @media (max-width: 800px) {
     flex-direction: column;
     min-height: 380px;
-    max-height: 500px;
     height: auto;
     padding: 24px 8px;
   }
@@ -71,10 +69,10 @@ const HeroContent = styled.div`
 `;
 
 const HeroTitle = styled.h2`
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif);
   font-size: 3rem;
   font-weight: 700;
-  color: #b76e79;
+  color: var(--color-rose);
   margin-bottom: 1.2rem;
   line-height: 1.1;
   @media (max-width: 800px) {
@@ -84,9 +82,9 @@ const HeroTitle = styled.h2`
 
 const HeroText = styled.p`
   font-size: 1.25rem;
-  color: #232323;
+  color: var(--color-text);
   margin-bottom: 2.2rem;
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-family: var(--font-sans);
   max-width: 600px;
   @media (max-width: 800px) {
     font-size: 1.08rem;
@@ -98,9 +96,9 @@ const HeroCTA = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #b76e79;
+  background: var(--color-rose);
   color: #fff;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 700;
   padding: 0.95em 2.5em;
@@ -111,11 +109,18 @@ const HeroCTA = styled(Link)`
   min-height: 56px;
   line-height: 1.2;
   margin-top: 0.5rem;
+
   &:hover, &:focus {
     background: #a05562;
     color: #fff;
     box-shadow: 0 4px 16px 0 rgba(60,60,60,0.14);
     outline: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 5px var(--color-rose);
   }
 `;
 
@@ -127,6 +132,8 @@ const Hero = React.memo(({
   ctaLink,
   title,
   imageAlt,
+  imageWidth,
+  imageHeight,
   imageLoading = 'lazy',
   imageDecoding = 'async',
   imageFetchPriority,
@@ -138,7 +145,9 @@ const Hero = React.memo(({
         <>
           <HeroImage
             src={image}
-            alt={imageAlt || 'Hero'}
+            alt={imageAlt ?? ''}
+            width={imageWidth}
+            height={imageHeight}
             loading={imageLoading}
             decoding={imageDecoding}
             fetchPriority={imageFetchPriority}
@@ -159,7 +168,9 @@ const Hero = React.memo(({
           </HeroContent>
           <HeroImage
             src={image}
-            alt={imageAlt || 'Hero'}
+            alt={imageAlt ?? ''}
+            width={imageWidth}
+            height={imageHeight}
             loading={imageLoading}
             decoding={imageDecoding}
             fetchPriority={imageFetchPriority}
@@ -174,7 +185,9 @@ const Hero = React.memo(({
 
 Hero.propTypes = {
   image: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string,
+  imageAlt: PropTypes.string.isRequired,
+  imageWidth: PropTypes.number,
+  imageHeight: PropTypes.number,
   title: PropTypes.node,
   text: PropTypes.node.isRequired,
   ctaText: PropTypes.string.isRequired,

@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import WeddingsPage from './pages/WeddingsPage';
 import VowRenewalsPage from './pages/VowRenewalsPage';
 import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const SkipLink = styled.a`
   position: absolute;
@@ -34,6 +35,7 @@ function App() {
           <Route path="/weddings" element={<WeddingsPage />} />
           <Route path="/vow-renewals" element={<VowRenewalsPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
     </>

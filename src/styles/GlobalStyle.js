@@ -1,22 +1,32 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    --color-rose: #b76e79;
+    --color-rose-dark: #8a4a56;
+    --color-text: #232323;
+    --color-muted: #666;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --radius: 14px;
+    font-size: clamp(16px, 0.98rem + 0.2vw, 18px);
+  }
+
   html, body, #root {
     min-height: 100vh;
     width: 100%;
     margin: 0;
     padding: 0;
-    text-align: left;
     background: #fff;
     box-sizing: border-box;
     overflow-x: hidden;
   }
 
   body {
-    font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+    font-family: var(--font-sans);
     line-height: 1.6;
     font-weight: 400;
-    color: #232323;
+    color: var(--color-text);
     background-color: #fff;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -26,22 +36,22 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     font-weight: 500;
-    color: #b76e79;
+    color: #a05468;
     text-decoration: underline;
     transition: color 0.2s;
   }
   a:hover, a:focus {
-    color: #8a4a56;
+    color: var(--color-rose-dark);
   }
 
   a:focus-visible {
-    outline: 2px solid #b76e79;
-    outline-offset: 2px;
+    outline: 3px solid var(--color-rose);
+    outline-offset: 3px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    color: #b76e79;
-    font-family: 'Playfair Display', serif;
+    color: var(--color-rose);
+    font-family: var(--font-serif);
     font-weight: 700;
     margin-top: 0;
     text-align: center;
@@ -49,44 +59,53 @@ const GlobalStyle = createGlobalStyle`
 
   p {
     margin: 0 0 1.2em 0;
-    color: #232323;
+    color: var(--color-text);
     font-size: 1.08rem;
   }
 
   button {
     border-radius: 6px;
-    border: 1px solid #b76e79;
+    border: 1px solid var(--color-rose);
     padding: 0.6em 1.2em;
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
     background-color: #fff;
-    color: #b76e79;
+    color: var(--color-rose);
     cursor: pointer;
     transition: border-color 0.25s, background 0.2s, color 0.2s;
   }
   button:hover, button:focus {
-    border-color: #8a4a56;
+    border-color: var(--color-rose-dark);
     background: #f9f6f7;
-    color: #8a4a56;
+    color: var(--color-rose-dark);
   }
 
   button:focus-visible {
-    outline: 2px solid #b76e79;
-    outline-offset: 2px;
+    outline: 3px solid var(--color-rose);
+    outline-offset: 3px;
   }
 
   main {
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    padding: 2rem 1rem 3rem 1rem;
+    padding: 1.5rem 1rem 3rem;
     background: #fff;
   }
 
-  @media (max-width: 600px) {
+  @media (min-width: 600px) {
     main {
-      padding: 1rem 0.5rem 2rem 0.5rem;
+      padding: 2rem 1.5rem 3rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
     }
   }
 `;

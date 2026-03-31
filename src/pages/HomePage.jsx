@@ -110,6 +110,17 @@ function HomePage() {
       </Split>
 
       <PageSection>
+        <h2 style={{ textAlign: 'left' }}>Why couples choose Rev. Miller</h2>
+        <List>
+          <li><strong>40+ years of experience</strong> as a licensed, ordained officiant</li>
+          <li><strong>Every ceremony is custom-written</strong> — no templates, no recycled scripts</li>
+          <li><strong>Traditional, Non-Denominational, and Civil</strong> ceremonies available</li>
+          <li><strong>Disney World, destination, and surprise ceremonies</strong> welcome</li>
+          <li><strong>Central Florida's trusted choice</strong> from Orlando to Sarasota</li>
+        </List>
+      </PageSection>
+
+      <PageSection>
         <p style={{ textAlign: 'center', color: '#555', fontSize: '0.95rem' }}>
           Serving {serviceAreas.slice(0, 3).join(", ")}, Walt Disney World, and all of Central Florida
         </p>

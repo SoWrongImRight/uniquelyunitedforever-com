@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from '../assets/uuf-logo.jpg';
+import logo from '../assets/uuf-logo.webp';
 
 const HamburgerMenuWrapper = styled.div`
   display: none;

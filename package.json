@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "images": "sharp --input 'src/assets/*.jpg' --output src/assets/ --format webp --quality 82",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -27,6 +28,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "sharp-cli": "^5.2.0",
     "vite": "^7.2.4"
   }
 }

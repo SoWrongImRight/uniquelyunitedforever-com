@@ -1,7 +1,7 @@
 
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import logo from '../assets/uuf-logo.jpg';
+import logo from '../assets/uuf-logo.webp';
 import HamburgerMenu from './HamburgerMenu';
 
 const Nav = styled.nav`

@@ -86,6 +86,18 @@ const HeroText = styled.p`
   margin-bottom: 2.2rem;
   font-family: var(--font-sans);
   max-width: 600px;
+
+  strong {
+    font-weight: 700;
+    color: var(--color-rose-dark);
+  }
+
+  em {
+    font-style: italic;
+    font-weight: 700;
+    color: var(--color-rose-dark);
+  }
+
   @media (max-width: 800px) {
     font-size: 1.08rem;
     margin-bottom: 1.5rem;
@@ -109,6 +121,7 @@ const HeroCTA = styled(Link)`
   min-height: 56px;
   line-height: 1.2;
   margin-top: 0.5rem;
+  align-self: center;
 
   &:hover, &:focus {
     background: #a05562;

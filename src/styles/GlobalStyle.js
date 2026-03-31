@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
     --color-muted: #666;
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-ornate: 'Cormorant Garamond', 'Times New Roman', serif;
     --radius: 14px;
     font-size: clamp(16px, 0.98rem + 0.2vw, 18px);
   }

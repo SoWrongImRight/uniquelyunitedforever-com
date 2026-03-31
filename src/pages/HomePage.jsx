@@ -28,18 +28,35 @@ const List = styled.ul`
   line-height: 1.6;
 `;
 
+const SignatureName = styled.p`
+  font-family: var(--font-ornate);
+  font-size: 2.1rem;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: var(--color-rose-dark);
+  margin-top: 1rem;
+`;
+
 function HomePage() {
   return (
     <PageLayout
-      title="Wedding and Vow Renewal Officiant in Orlando, FL"
-      subtitle="Wedding and vow renewal officiant service in Orlando, Florida"
+      title="Wedding Officiated with Competence & Care in Orlando, FL"
+      // subtitle="Wedding and vow renewal officiant service in Orlando, Florida"
       metaDescription="Wedding and vow renewal officiant in Orlando, Florida. Custom ceremonies created with care and decades of experience."
       canonicalPath="/"
+      compactHeader
       narrow
     >
       <Hero
         image={homeHero}
-        text="Every ceremony is uniquely created — with the hope that you remain united for a lifetime… forever."
+        text={
+          <>
+            Every ceremony is <strong>Uniquely</strong> created — with the hope that you remain{" "}
+            <strong>United</strong> for a lifetime… forever.
+          </>
+        }
         ctaText="Plan Your Ceremony"
         ctaLink="/contact"
         layout="vertical"
@@ -62,7 +79,7 @@ function HomePage() {
             <p>
               Please allow me a moment to introduce myself and{" "}
               <strong>UniquelyUnitedforever</strong>. I am{" "}
-              <strong>Rev. Randal Miller</strong>, a licensed and ordained
+              <strong>Rev. Randall Miller</strong>, a licensed and ordained
               minister with forty plus years of experience as a wedding ceremony
               officiant / religious public speaker.
             </p>
@@ -91,10 +108,10 @@ function HomePage() {
           <PageSection>
             <p>
               <strong>Why the name UniquelyUnitedforever?</strong> Because every
-              ceremony is <em>Uniquely</em> created and I desire that you remain{" "}
-              <em>United</em> for a lifetime… forever!
+              ceremony is <strong>Uniquely</strong> created and I desire that you remain{" "}
+              <strong>United</strong> for a lifetime… forever!
             </p>
-            <p style={{ fontWeight: 600, marginTop: "1rem" }}>Rev. Miller</p>
+            <SignatureName>Rev. Randall Miller</SignatureName>
           </PageSection>
         </div>
 

@@ -5,12 +5,13 @@ import logo from '../assets/uuf-logo.webp';
 import HamburgerMenu from './HamburgerMenu';
 
 const Nav = styled.nav`
-  background: #fff;
-  border-bottom: 1px solid #eee;
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid rgba(183, 110, 121, 0.1);
   display: flex;
   align-items: center;
   font-family: var(--font-serif);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(8px);
 `;
 
 const NavContent = styled.div`
@@ -23,8 +24,8 @@ const NavContent = styled.div`
   width: 100%;
 
   @media (min-width: 800px) {
-    padding: 0 1.5rem;
-    min-height: 80px;
+    padding: 1rem 1.75rem;
+    min-height: 88px;
   }
 `;
 
@@ -32,6 +33,7 @@ const LogoLink = styled(Link)`
   display: flex;
   align-items: center;
   margin-right: 1rem;
+  padding: 0.25rem 0;
 `;
 
 const Logo = styled.img`
@@ -65,29 +67,55 @@ const NavItem = styled.li``;
 
 const StyledNavLink = styled(NavLink)`
   text-decoration: none;
-  color: #333;
-  font-weight: 600;
-  font-size: 1.5rem;
+  color: #3f3739;
+  font-weight: 700;
+  font-size: 1.3rem;
   font-family: var(--font-serif);
-  letter-spacing: 0.5px;
-  padding: 4px 12px;
-  border-radius: 6px;
-  border: none;
-  box-shadow: none;
-  transition: color 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.01em;
+  padding: 0.5rem 0.1rem;
+  position: relative;
+  transition:
+    color 0.22s ease,
+    opacity 0.22s ease;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.2rem;
+    height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent 0%, var(--color-rose) 18%, var(--color-rose) 82%, transparent 100%);
+    opacity: 0;
+    transform: scaleX(0.55);
+    transition: opacity 0.22s ease, transform 0.22s ease;
+  }
 
   &:hover, &:focus {
     color: var(--color-rose);
-    background: none;
-    box-shadow: 0 2px 8px 0 rgba(60, 60, 60, 0.12);
     text-decoration: none;
     outline: none;
+    opacity: 0.92;
+  }
+
+  &:hover::after, &:focus::after {
+    opacity: 0.55;
+    transform: scaleX(0.8);
   }
 
   &.active {
     color: var(--color-rose);
-    background: none;
-    box-shadow: 0 2px 8px 0 rgba(60, 60, 60, 0.12);
+  }
+
+  &.active::after {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-rose);
+    outline-offset: 3px;
   }
 `;
 

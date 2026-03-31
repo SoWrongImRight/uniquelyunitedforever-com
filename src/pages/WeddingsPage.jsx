@@ -1,6 +1,20 @@
 import { PageLayout, PageSection } from "../components/PageLayout";
+import styled from "styled-components";
 import Testimonials from "../components/Testimonials";
-import { testimonials } from "../content/siteContent";
+import testimonies from "../content/testimonies.json";
+
+const IntroImage = styled.img`
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 14px 34px rgba(60, 60, 60, 0.12);
+  object-fit: cover;
+  height: 180px;
+
+  @media (min-width: 800px) {
+    height: 200px;
+  }
+`;
 
 function WeddingsPage() {
   return (
@@ -11,6 +25,17 @@ function WeddingsPage() {
       canonicalPath="/weddings"
       narrow
     >
+      <PageSection>
+        <IntroImage
+          src="/table_set.jpg"
+          alt="Wedding table setting"
+          width="1280"
+          height="776"
+          loading="eager"
+          fetchPriority="high"
+        />
+      </PageSection>
+
       <PageSection>
         <p>
           You may choose to exchange vows in the midst of a fragrant botanical
@@ -26,7 +51,7 @@ function WeddingsPage() {
 
       <PageSection>
         <h2 style={{ marginTop: 0, textAlign: 'left' }}>Kind words from couples and families</h2>
-        <Testimonials items={testimonials} />
+        <Testimonials items={testimonies} />
       </PageSection>
     </PageLayout>
   );

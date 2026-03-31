@@ -69,6 +69,12 @@ const Textarea = styled.textarea`
   resize: vertical;
 `;
 
+const ErrorText = styled.span`
+  color: #8a2433;
+  font-size: 0.95rem;
+  font-weight: 600;
+`;
+
 const RadioGroup = styled.div`
   display: grid;
   gap: 0.5rem;
@@ -191,6 +197,7 @@ function ContactPage() {
   const weddingTabRef = useRef(null);
   const renewalTabRef = useRef(null);
   const minDate = new Date().toISOString().split("T")[0];
+  const [errors, setErrors] = useState({});
   const [fields, setFields] = useState({
     brideName: "",
     groomName: "",
@@ -222,10 +229,44 @@ function ContactPage() {
   function onChange(e) {
     const { name, value } = e.target;
     setFields((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => {
+      if (!prev[name]) {
+        return prev;
+      }
+
+      const nextErrors = { ...prev };
+      delete nextErrors[name];
+      return nextErrors;
+    });
   }
 
   function onSubmit(e) {
     e.preventDefault();
+    const nextErrors = {};
+    const requiredFields = {
+      email: "Please enter your best email address.",
+      phone: "Please enter your phone number.",
+      date: "Please select a ceremony date.",
+      time: "Please select a ceremony time.",
+      venue: "Please enter your venue.",
+    };
+
+    Object.entries(requiredFields).forEach(([fieldName, message]) => {
+      if (!fields[fieldName]?.trim()) {
+        nextErrors[fieldName] = message;
+      }
+    });
+
+    setErrors(nextErrors);
+
+    if (Object.keys(nextErrors).length > 0) {
+      const firstInvalidField = Object.keys(requiredFields).find((fieldName) => nextErrors[fieldName]);
+      if (firstInvalidField) {
+        document.getElementById(`field-${firstInvalidField}`)?.focus();
+      }
+      return;
+    }
+
     window.location.href = mailto;
   }
 
@@ -362,9 +403,12 @@ function ContactPage() {
               onChange={onChange}
               type="email"
               autoComplete="email"
+              aria-describedby={errors.email ? "field-email-error" : undefined}
+              aria-invalid={errors.email ? "true" : undefined}
               required
               aria-required="true"
             />
+            {errors.email ? <ErrorText id="field-email-error">{errors.email}</ErrorText> : null}
           </Field>
           <Field htmlFor="field-phone">
             <span id="field-phone-label">Phone</span>
@@ -376,9 +420,12 @@ function ContactPage() {
               onChange={onChange}
               type="tel"
               autoComplete="tel"
+              aria-describedby={errors.phone ? "field-phone-error" : undefined}
+              aria-invalid={errors.phone ? "true" : undefined}
               required
               aria-required="true"
             />
+            {errors.phone ? <ErrorText id="field-phone-error">{errors.phone}</ErrorText> : null}
           </Field>
         </Grid2>
 
@@ -393,9 +440,12 @@ function ContactPage() {
               onChange={onChange}
               type="date"
               min={minDate}
+              aria-describedby={errors.date ? "field-date-error" : undefined}
+              aria-invalid={errors.date ? "true" : undefined}
               required
               aria-required="true"
             />
+            {errors.date ? <ErrorText id="field-date-error">{errors.date}</ErrorText> : null}
           </Field>
           <Field htmlFor="field-time">
             <span id="field-time-label">Time</span>
@@ -406,9 +456,12 @@ function ContactPage() {
               value={fields.time}
               onChange={onChange}
               type="time"
+              aria-describedby={errors.time ? "field-time-error" : undefined}
+              aria-invalid={errors.time ? "true" : undefined}
               required
               aria-required="true"
             />
+            {errors.time ? <ErrorText id="field-time-error">{errors.time}</ErrorText> : null}
           </Field>
         </Grid2>
 
@@ -420,9 +473,12 @@ function ContactPage() {
             aria-labelledby="field-venue-label"
             value={fields.venue}
             onChange={onChange}
+            aria-describedby={errors.venue ? "field-venue-error" : undefined}
+            aria-invalid={errors.venue ? "true" : undefined}
             required
             aria-required="true"
           />
+          {errors.venue ? <ErrorText id="field-venue-error">{errors.venue}</ErrorText> : null}
         </Field>
 
         {mode === "wedding" ? (

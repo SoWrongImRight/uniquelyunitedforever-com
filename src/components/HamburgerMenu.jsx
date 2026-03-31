@@ -1,10 +1,8 @@
 
-
-
-
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import logo from '../assets/uuf-logo.jpg';
 
 const HamburgerMenuWrapper = styled.div`
   display: none;
@@ -28,8 +26,10 @@ const HamburgerButton = styled.button`
   z-index: 1001;
   border-radius: 50%;
   transition: background 0.2s;
-  &:focus {
-    outline: 2px solid #b76e79;
+
+  &:focus-visible {
+    outline: 3px solid var(--color-rose);
+    outline-offset: 3px;
     background: #f9f6f7;
   }
 `;
@@ -39,7 +39,7 @@ const HamburgerBar = styled.span`
   width: 30px;
   height: 3.5px;
   margin: 5px 0;
-  background: #b76e79;
+  background: var(--color-rose);
   border-radius: 2px;
   transition: 0.3s;
   position: relative;
@@ -49,19 +49,19 @@ const MobileNav = styled.nav`
   display: flex;
   flex-direction: column;
   position: fixed;
-  top: 140px;
+  top: ${({ $topOffset }) => `${$topOffset}px`};
   left: 0;
   width: 100%;
-  height: calc(100vh - 140px);
+  height: ${({ $topOffset }) => `calc(100vh - ${$topOffset}px)`};
   background: #fff;
   z-index: 1000;
-  opacity: ${({ open }) => (open ? 1 : 0)};
-  pointer-events: ${({ open }) => (open ? 'auto' : 'none')};
-  transform: ${({ open }) => (open ? 'translateY(0)' : 'translateY(-20px)')};
+  opacity: ${({ $open }) => ($open ? 1 : 0)};
+  pointer-events: ${({ $open }) => ($open ? 'auto' : 'none')};
+  transform: ${({ $open }) => ($open ? 'translateY(0)' : 'translateY(-20px)')};
   transition: opacity 0.25s, transform 0.25s;
-  padding-top: 1.5rem;
+  padding-top: 1rem;
   align-items: stretch;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
 `;
 
 const MobileNavLogo = styled.div`
@@ -82,14 +82,14 @@ const MobileLogoLink = styled(Link)`
 `;
 
 const MobileLogoImg = styled.img`
-  max-height: 120px;
-  width: auto;
+  max-width: 120px;
+  width: 100%;
   object-fit: contain;
   display: block;
 `;
 
 const MobileSiteName = styled.span`
-  font-family: 'Playfair Display', serif;
+  font-family: var(--font-serif);
   font-size: 1.2rem;
   font-weight: 700;
   color: #333;
@@ -98,8 +98,8 @@ const MobileSiteName = styled.span`
 `;
 
 const MobileNavLink = styled(NavLink)`
-  color: #b76e79;
-  font-family: 'Playfair Display', serif;
+  color: var(--color-rose);
+  font-family: var(--font-serif);
   font-weight: 700;
   font-size: 1.3rem;
   text-decoration: none;
@@ -111,20 +111,52 @@ const MobileNavLink = styled(NavLink)`
   width: 100%;
   display: block;
   box-sizing: border-box;
+
   &:last-child {
     border-bottom: none;
   }
+
   &:hover, &:focus {
     background: #f9f6f7;
-    color: #8a4a56;
+    color: var(--color-rose-dark);
     outline: none;
   }
 `;
 
+const MobileNavHeader = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1rem 0.5rem;
+`;
+
+const CloseButton = styled.button`
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  font-weight: 700;
+`;
+
 function HamburgerMenu() {
   const [open, setOpen] = useState(false);
+  const [topOffset, setTopOffset] = useState(80);
   const buttonRef = useRef(null);
+  const navRef = useRef(null);
   const firstLinkRef = useRef(null);
+  const lastLinkRef = useRef(null);
+
+  useEffect(() => {
+    function updateTopOffset() {
+      const headerHeight = buttonRef.current?.closest('header')?.offsetHeight ?? 80;
+      setTopOffset(headerHeight);
+    }
+
+    updateTopOffset();
+    window.addEventListener('resize', updateTopOffset);
+
+    return () => {
+      window.removeEventListener('resize', updateTopOffset);
+    };
+  }, []);
 
   // Prevent background scroll when menu is open
   useEffect(() => {
@@ -157,6 +189,23 @@ function HamburgerMenu() {
     }
 
     function onKeyDown(event) {
+      if (event.key === 'Tab') {
+        const first = firstLinkRef.current;
+        const last = lastLinkRef.current;
+
+        if (!first || !last || !navRef.current?.contains(document.activeElement)) {
+          return;
+        }
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+
       if (event.key === 'Escape') {
         setOpen(false);
       }
@@ -181,24 +230,42 @@ function HamburgerMenu() {
           <HamburgerBar style={open ? { transform: 'translateY(-13.5px) rotate(-45deg)' } : {}} />
         </HamburgerButton>
       </HamburgerMenuWrapper>
-      <MobileNav id="mobile-nav-menu" open={open} aria-hidden={!open} aria-label="Mobile">
+      <MobileNav
+        id="mobile-nav-menu"
+        ref={navRef}
+        $open={open}
+        $topOffset={topOffset}
+        aria-hidden={open ? undefined : 'true'}
+        aria-label="Mobile navigation"
+      >
         {open && (
           <>
-{/*             <MobileNavLogo>
-              <MobileLogoLink to="/" onClick={() => setOpen(false)} aria-label="Home - Uniquely United Forever">
+            <MobileNavLogo>
+              <MobileLogoLink
+                to="/"
+                onClick={() => setOpen(false)}
+                aria-label="Home - Uniquely United Forever"
+                ref={firstLinkRef}
+              >
                 <MobileLogoImg src={logo} alt="Uniquely United Forever logo" />
                 <MobileSiteName>Uniquely United Forever</MobileSiteName>
               </MobileLogoLink>
-            </MobileNavLogo> */}
+            </MobileNavLogo>
+            <MobileNavHeader>
+              <CloseButton type="button" onClick={() => setOpen(false)} aria-label="Close menu">
+                ✕ Close
+              </CloseButton>
+            </MobileNavHeader>
             <MobileNavLink
               to="/weddings"
               onClick={() => setOpen(false)}
-              ref={firstLinkRef}
             >
               Weddings
             </MobileNavLink>
             <MobileNavLink to="/vow-renewals" onClick={() => setOpen(false)}>Vow Renewals</MobileNavLink>
-            <MobileNavLink to="/contact" onClick={() => setOpen(false)}>Contact</MobileNavLink>
+            <MobileNavLink to="/contact" onClick={() => setOpen(false)} ref={lastLinkRef}>
+              Contact
+            </MobileNavLink>
           </>
         )}
       </MobileNav>

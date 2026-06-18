@@ -77,8 +77,7 @@ function HomePage() {
               journey a total success.
             </p>
             <p>
-              Please allow me a moment to introduce myself and{" "}
-              <strong>UniquelyUnitedforever</strong>. I am{" "}
+              I am{" "}
               <strong>Rev. Randall Miller</strong>, a licensed and ordained
               minister with forty plus years of experience as a wedding ceremony
               officiant / religious public speaker.

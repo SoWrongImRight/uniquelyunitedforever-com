@@ -93,10 +93,10 @@ function HomePage() {
             </p>
             <List>
               <li>
-                <strong>Traditional</strong> (religious) Scriptures, prayers, overt religious tones, scripted with a contemporary flair.
+                <strong>Traditional</strong> (religious) Scripture, prayer, overt religious tones, scripted with a contemporary flair.
               </li>
               <li>
-                <strong>Non-Denominational (religious)</strong>
+                <strong>Non-Traditional</strong> (religious) Generic prayer, no Scripture, and scripted with a contemporary flair.
               </li>
               <li>
                 <strong>Civil</strong>

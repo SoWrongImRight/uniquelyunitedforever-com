@@ -78,9 +78,9 @@ function HomePage() {
             </p>
             <p>
               I am{" "}
-              <strong>Rev. Randall Miller</strong>, a licensed and ordained
-              minister with forty plus years of experience as a wedding ceremony
-              officiant / religious public speaker.
+              <strong>Rev. Miller</strong>, a licensed and ordained
+              minister with twenty-five plus years of experience as a wedding ceremony
+              officiant.
             </p>
           </PageSection>
 
@@ -93,7 +93,7 @@ function HomePage() {
             </p>
             <List>
               <li>
-                <strong>Traditional (religious)</strong>
+                <strong>Traditional</strong> (religious) Scriptures, prayers, overt religious tones, scripted with a contemporary flair.
               </li>
               <li>
                 <strong>Non-Denominational (religious)</strong>

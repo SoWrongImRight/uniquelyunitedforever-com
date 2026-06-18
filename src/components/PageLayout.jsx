@@ -54,7 +54,6 @@ const Title = styled.h1`
   color: var(--color-rose);
   letter-spacing: 0.04em;
   font-weight: 700;
-  text-transform: uppercase;
   font-size: clamp(1.55rem, 1.15rem + 1.8vw, 3rem);
   margin: 0;
   line-height: 1.1;

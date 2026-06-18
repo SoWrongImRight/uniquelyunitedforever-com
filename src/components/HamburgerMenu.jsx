@@ -246,6 +246,9 @@ function HamburgerMenu() {
                 <MobileSiteName>Uniquely United Forever</MobileSiteName>
               </MobileLogoLink>
             </MobileNavLogo>
+            <MobileNavLink to="/" end onClick={() => setOpen(false)}>
+              Home
+            </MobileNavLink>
             <MobileNavLink
               to="/weddings"
               onClick={() => setOpen(false)}

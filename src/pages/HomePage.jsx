@@ -108,7 +108,7 @@ function HomePage() {
             <p>
               <strong>Why the name UniquelyUnitedforever?</strong> Because every
               ceremony is <strong>Uniquely</strong> created and I desire that you remain{" "}
-              <strong>United</strong> for a lifetime…(" ")<strong>forever</strong>!
+              <strong>United</strong> for a lifetime… <strong>forever</strong>!
             </p>
             <SignatureName>Rev. Miller</SignatureName>
           </PageSection>

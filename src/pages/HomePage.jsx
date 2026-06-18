@@ -96,7 +96,7 @@ function HomePage() {
                 <strong>Traditional</strong> (religious) Scripture, prayer, overt religious tones, scripted with a contemporary flair.
               </li>
               <li>
-                <strong>Non-Traditional</strong> (religious) Generic prayer, no Scripture, and scripted with a contemporary flair.
+                <strong>Non-Traditional</strong> (religious) Generic prayer, written affirming life values, scripted with a contemporary flair.
               </li>
               <li>
                 <strong>Civil</strong>

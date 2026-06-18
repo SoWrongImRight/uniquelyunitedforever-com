@@ -128,10 +128,10 @@ function HomePage() {
       <PageSection>
         <h2 style={{ textAlign: 'left' }}>Why couples choose Rev. Miller</h2>
         <List>
-          <li><strong>25+</strong>  years of experienceas a licensed, ordained officiant</li>
+          <li><strong>25+</strong>  years of experience as a licensed, ordained officiant</li>
           <li><strong>Uniquely</strong> scripted and customized ceremonies</li>
           <li><strong>Traditional, Non-Traditional, and Civil</strong> ceremonies available</li>
-          <li>Servicing most venues, Disney World, area hotels, destination, and sudden notice  ceremonies welcome</li>
+          <li><strong>Servicing most venues,</strong> Disney World, area hotels, destination, and sudden notice  ceremonies welcome</li>
           <li><strong>Central Florida's trusted choice</strong> from Orlando to Sarasota</li>
         </List>
       </PageSection>

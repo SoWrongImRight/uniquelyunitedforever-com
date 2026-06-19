@@ -99,7 +99,7 @@ function HomePage() {
                 <strong>Non-Traditional</strong> (religious) Generic prayer, written affirming life values, scripted with a contemporary flair.
               </li>
               <li>
-                <strong>Civil</strong> Love and life experiences written with a contemporary flair.
+                <strong>Civil</strong> (non-religiious) Love and life experiences written with a contemporary flair.
               </li>
             </List>
           </PageSection>

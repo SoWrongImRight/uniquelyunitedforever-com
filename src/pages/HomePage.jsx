@@ -86,7 +86,7 @@ function HomePage() {
 
           <PageSection>
             <p>
-              <strong>UniquelyUnitedforever</strong> is a wedding / vow-renewal
+              <strong>UniquelyUnitedForever</strong> is a wedding / vow-renewal
               officiant service located in beautiful Orlando, FL. I script and
               perform your wedding day or vow-renewal ceremony to near
               perfection. You may choose from:
@@ -106,7 +106,7 @@ function HomePage() {
 
           <PageSection>
             <p>
-              <strong>Why the name UniquelyUnitedforever?</strong> Because every
+              <strong>Why the name UniquelyUnitedForever?</strong> Because every
               ceremony is <strong>Uniquely</strong> created and I desire that you remain{" "}
               <strong>United</strong> for a lifetime… <strong>forever</strong>!
             </p>

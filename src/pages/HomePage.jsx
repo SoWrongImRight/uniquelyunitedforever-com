@@ -54,7 +54,7 @@ function HomePage() {
         text={
           <>
             Every ceremony is <strong>Uniquely</strong> created — with the hope that you remain{" "}
-            <strong>United</strong> for a lifetime… forever.
+            <strong>United</strong> for a lifetime… <strong>forever</strong>.
           </>
         }
         ctaText="Plan Your Ceremony"

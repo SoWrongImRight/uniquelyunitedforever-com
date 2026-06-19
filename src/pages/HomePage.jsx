@@ -16,20 +16,10 @@ const Split = styled.div`
   }
 `;
 
-const PortraitWrapper = styled.div`
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 4px 18px rgba(60, 60, 60, 0.10);
-`;
-
 const Portrait = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(60, 60, 60, 0.10);
 `;
 
 const List = styled.ul`
@@ -125,15 +115,13 @@ function HomePage() {
         </div>
 
         <div>
-          <PortraitWrapper>
-            <Portrait
-              src={revPhoto}
-              alt="Reverend Randal Miller - Uniquely United Forever"
-              loading="lazy"
-              width="340"
-              height="460"
-            />
-          </PortraitWrapper>
+          <Portrait
+            src={revPhoto}
+            alt="Reverend Randal Miller - Uniquely United Forever"
+            loading="lazy"
+            width="340"
+            height="460"
+          />
         </div>
       </Split>
 
@@ -143,7 +131,7 @@ function HomePage() {
           <li><strong>25+</strong>  years of experience as a licensed, ordained officiant</li>
           <li><strong>Uniquely</strong> scripted and customized ceremonies</li>
           <li><strong>Traditional, Non-Traditional, and Civil</strong> ceremonies available</li>
-          <li><strong>Servicing most venues,</strong> Disney World, area hotels, destination, and sudden notice  ceremonies welcome</li>
+          <li><strong>Servicing most venues,</strong> Disney World, area hotels, destination, and sudden notice weddings welcome</li>
           <li><strong>Central Florida's trusted choice</strong> from Orlando to Sarasota</li>
         </List>
       </PageSection>

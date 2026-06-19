@@ -51,7 +51,7 @@ function WeddingsPage() {
       </PageSection>
 
       <PageSection>
-        <h2 style={{ marginTop: 0, textAlign: 'left' }}>Kind words from couples and families</h2>
+        <h2 style={{ marginTop: 0, textAlign: 'left' }}>Kind words from couples and family</h2>
         <Testimonials items={testimonies} />
       </PageSection>
     </PageLayout>

@@ -16,10 +16,20 @@ const Split = styled.div`
   }
 `;
 
+const PortraitWrapper = styled.div`
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(60, 60, 60, 0.10);
+`;
+
 const Portrait = styled.img`
   width: 100%;
-  border-radius: 14px;
-  box-shadow: 0 4px 18px rgba(60, 60, 60, 0.10);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
 `;
 
 const List = styled.ul`
@@ -106,7 +116,7 @@ function HomePage() {
 
           <PageSection>
             <p>
-              <strong>Why the name UniquelyUnitedForever?</strong> Because every
+              Why the name <strong>UniquelyUnitedForever?</strong> Because every
               ceremony is <strong>Uniquely</strong> created and I desire that you remain{" "}
               <strong>United</strong> for a lifetime… <strong>forever</strong>!
             </p>
@@ -115,13 +125,15 @@ function HomePage() {
         </div>
 
         <div>
-          <Portrait
-            src={revPhoto}
-            alt="Reverend Randal Miller - Uniquely United Forever"
-            loading="lazy"
-            width="340"
-            height="460"
-          />
+          <PortraitWrapper>
+            <Portrait
+              src={revPhoto}
+              alt="Reverend Randal Miller - Uniquely United Forever"
+              loading="lazy"
+              width="340"
+              height="460"
+            />
+          </PortraitWrapper>
         </div>
       </Split>
 

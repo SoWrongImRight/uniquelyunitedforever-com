@@ -100,7 +100,7 @@ function VowRenewalsPage() {
         <h2 style={{ marginTop: 0, textAlign: 'left' }}>A note from a couple</h2>
         <Letter>
           <LetterImage
-            src="/bengyel.png"
+            src="/bengyel1.jpg"
             alt="Rita and Zsolt Bengyel vow renewal"
             width="700"
             height="700"

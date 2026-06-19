@@ -211,7 +211,7 @@ function ContactPage() {
     coordinatorPhone: "",
     photographerName: "",
     photographerPhone: "",
-    ceremonyType: "Traditional (religious)",
+    ceremonyType: "Traditional",
     partySize: "Intimate (4 or less in bridal party — rehearsal optional)",
     comments: "",
   });
@@ -544,13 +544,13 @@ function ContactPage() {
               <input
                 type="radio"
                 name="ceremonyType"
-                value="Traditional (religious)"
-                checked={fields.ceremonyType === "Traditional (religious)"}
+                value="Traditional"
+                checked={fields.ceremonyType === "Traditional"}
                 onChange={onChange}
               />
               <div>
-                <strong>Traditional (religious)</strong>
-                <small>Scripture, prayer, contemporary wording, overt religious tones.</small>
+                <strong>Traditional</strong>
+                <small>Scripture, prayer, overt religious tones, scripted with a contemporary flair.</small>
               </div>
             </RadioRow>
 
@@ -558,13 +558,13 @@ function ContactPage() {
               <input
                 type="radio"
                 name="ceremonyType"
-                value="Non-Denominational (religious)"
-                checked={fields.ceremonyType === "Non-Denominational (religious)"}
+                value="Non-Traditional"
+                checked={fields.ceremonyType === "Non-Traditional"}
                 onChange={onChange}
               />
               <div>
-                <strong>Non-Denominational (religious)</strong>
-                <small>Generic prayer, no scripture, contemporary wording.</small>
+                <strong>Non-Traditional</strong>
+                <small>Generic prayer, written affirming life values, scripted with a contemporary flair.</small>
               </div>
             </RadioRow>
 
@@ -572,13 +572,13 @@ function ContactPage() {
               <input
                 type="radio"
                 name="ceremonyType"
-                value="Civil / Non-Religious"
-                checked={fields.ceremonyType === "Civil / Non-Religious"}
+                value="Civil"
+                checked={fields.ceremonyType === "Civil"}
                 onChange={onChange}
               />
               <div>
-                <strong>Civil / Non-Religious</strong>
-                <small>No reference to religion, contemporary wording.</small>
+                <strong>Civil</strong>
+                <small>Love and life experiences written with a contemporary flair.</small>
               </div>
             </RadioRow>
           </RadioGroup>

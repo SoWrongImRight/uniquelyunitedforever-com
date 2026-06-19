@@ -42,7 +42,7 @@ const SignatureName = styled.p`
 function HomePage() {
   return (
     <PageLayout
-      title="Wedding Officiated with Competence & Care"
+      title="Weddings Officiated with Competence & Care"
       // subtitle="Wedding and vow renewal officiant service in Orlando, Florida"
       metaDescription="Wedding and vow renewal officiant in Orlando, Florida. Custom ceremonies created with care and decades of experience."
       canonicalPath="/"

@@ -31,7 +31,7 @@ const List = styled.ul`
 const Divider = styled.div`
   width: min(132px, 34vw);
   height: 1px;
-  margin: 0.9rem auto 0;
+  margin: 2rem auto;
   background: linear-gradient(
     90deg,
     rgba(183, 110, 121, 0) 0%,
@@ -43,7 +43,7 @@ const Divider = styled.div`
 
   @media (min-width: 800px) {
     width: min(180px, 38vw);
-    margin: 1.35rem auto 0;
+    margin: 2.75rem auto;
   }
 `;
 

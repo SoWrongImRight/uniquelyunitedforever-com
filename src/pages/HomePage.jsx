@@ -153,7 +153,7 @@ function HomePage() {
           <li><strong>25+</strong>  years of experience as a licensed, ordained officiant</li>
           <li><strong>Uniquely</strong> scripted and customized ceremonies</li>
           <li><strong>Traditional, Non-Traditional, and Civil</strong> ceremonies available</li>
-          <li><strong>Servicing most venues,</strong> Disney World, area hotels, destination and sudden notice weddings welcome</li>
+          <li><strong>Servicing most venues,</strong> Disney World, area hotels, destination and sudden-notice weddings welcome</li>
           <li><strong>Central Florida's trusted choice</strong> from Orlando to Sarasota</li>
         </List>
       </PageSection>

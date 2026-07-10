@@ -28,7 +28,8 @@ function WeddingsPage() {
     >
       <PageSection>
         <IntroImage
-          src="/table_set.jpg"
+          // src="/table_set.jpg"
+          src="/uuf_isleworth_low_quality.jpg"
           alt="Wedding table setting"
           width="1280"
           height="776"

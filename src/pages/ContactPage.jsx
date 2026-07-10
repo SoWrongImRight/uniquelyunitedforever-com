@@ -550,7 +550,7 @@ function ContactPage() {
               />
               <div>
                 <strong>Traditional</strong>
-                <small>Scripture, prayer, overt religious tones, scripted with a contemporary flair.</small>
+                <small>(religious) Scripture, prayer, overt religious tones, scripted with a contemporary flair.</small>
               </div>
             </RadioRow>
 
@@ -564,7 +564,7 @@ function ContactPage() {
               />
               <div>
                 <strong>Non-Traditional</strong>
-                <small>Generic prayer, written affirming life values, scripted with a contemporary flair.</small>
+                <small>(religious) Generic prayer, life values, scripted with a contemporary flair.</small>
               </div>
             </RadioRow>
 
@@ -578,7 +578,7 @@ function ContactPage() {
               />
               <div>
                 <strong>Civil</strong>
-                <small>Love and life experiences written with a contemporary flair.</small>
+                <small>(non-religious) Love and life experiences scripted with a contemporary flair.</small>
               </div>
             </RadioRow>
           </RadioGroup>

@@ -1,7 +1,8 @@
 import Hero from "../components/Hero";
 import styled from "styled-components";
 import homeHero from "../assets/uuf-home-hero.webp";
-import revPhoto from "../assets/uuf-rm.webp";
+// import revPhoto from "../assets/uuf-rm.webp";
+import revPhoto from "../assets/uuf_randal.jpeg";
 import { PageLayout, PageSection } from "../components/PageLayout";
 import { serviceAreas } from "../content/siteContent";
 

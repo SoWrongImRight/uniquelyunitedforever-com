@@ -28,6 +28,25 @@ const List = styled.ul`
   line-height: 1.6;
 `;
 
+const Divider = styled.div`
+  width: min(132px, 34vw);
+  height: 1px;
+  margin: 0.9rem auto 0;
+  background: linear-gradient(
+    90deg,
+    rgba(183, 110, 121, 0) 0%,
+    rgba(183, 110, 121, 0.35) 20%,
+    rgba(183, 110, 121, 0.6) 50%,
+    rgba(183, 110, 121, 0.35) 80%,
+    rgba(183, 110, 121, 0) 100%
+  );
+
+  @media (min-width: 800px) {
+    width: min(180px, 38vw);
+    margin: 1.35rem auto 0;
+  }
+`;
+
 const SignatureName = styled.p`
   font-family: var(--font-ornate);
   font-size: 2.1rem;
@@ -124,6 +143,8 @@ function HomePage() {
           />
         </div>
       </Split>
+
+      <Divider />
 
       <PageSection>
         <h2 style={{ textAlign: 'left' }}>Why couples choose Rev. Miller</h2>

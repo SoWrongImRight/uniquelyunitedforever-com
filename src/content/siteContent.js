@@ -62,7 +62,7 @@ export const vowRenewalLetter = {
 
 export const vowRenewalLetter2 = {
   salutation: "Dear Reverend Miller,",
-  body: "We travelled downd memory's lane fifty years, in the blink of an eye.",
+  body: "We travelled downd memory's lane fifty years, in the blink of an eye.  Your words were thoughtful and intentional. It was as though we were exchanging our vows for the very first time.",
   signature: "Barbara and Shelton Peters",
   footer: "Oahu, Hawaii",
 }

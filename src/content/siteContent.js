@@ -57,7 +57,7 @@ export const vowRenewalLetter = {
   salutation: "Dear Reverend Miller,",
   body: "I would like to thank you for what (besides the births of my children) had to have been my most perfect day. Words cannot describe how I felt. I am happier now, than I\u2019ve been in years. My husband was the perfect gentleman\u2026 he had this soft expression on his face that I have not seen for the longest time. The ceremony was exquisite. For that I am most grateful to you. I kept reminding myself to savor every single second.\n\nWhen we returned to the hotel after having been out all day, our pictures were already in the room waiting for us. I fell asleep holding my album. Thank You for this day I will cherish the memories forever.",
   signature: "Rita and Zsolt Bengyel",
-  footer: "15th Anniversary • Budapest, Hungary",
+  footer: "40th Anniversary • Budapest, Hungary",
 };
 
 export const vowRenewalLetter2 = {

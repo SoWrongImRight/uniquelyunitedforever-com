@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { PageLayout, PageSection } from "../components/PageLayout";
 import { vowRenewalLetter } from "../content/siteContent";
+import { vowRenewalLetter2 } from "../content/siteContent";
 
 const IntroImage = styled.img`
   width: 100%;
@@ -41,6 +42,11 @@ const LetterImage = styled.img`
   border-radius: 14px;
   object-fit: cover;
   box-shadow: 0 8px 22px rgba(60, 60, 60, 0.12);
+`;
+
+const UncroppedLetterImage = styled(LetterImage)`
+  height: auto;
+  object-fit: contain;
 `;
 
 const LetterContent = styled.div``;
@@ -111,6 +117,21 @@ function VowRenewalsPage() {
             <p>{vowRenewalLetter.body}</p>
             <Signature>{vowRenewalLetter.signature}</Signature>
             <Footer>{vowRenewalLetter.footer}</Footer>
+          </LetterContent>
+        </Letter>
+        <Letter>
+          <UncroppedLetterImage
+            src="/shelton_barbara.jpg"
+            alt="Shelton and Barbara Peters 50th anniversary vow renewal"
+            width="2820"
+            height="3044"
+            loading="lazy"
+          />
+          <LetterContent>
+            <p>{vowRenewalLetter2.salutation}</p>
+            <p>{vowRenewalLetter2.body}</p>
+            <Signature>{vowRenewalLetter2.signature}</Signature>
+            <Footer>{vowRenewalLetter2.footer}</Footer>
           </LetterContent>
         </Letter>
       </PageSection>

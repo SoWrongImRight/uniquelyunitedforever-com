@@ -59,3 +59,10 @@ export const vowRenewalLetter = {
   signature: "Rita and Zsolt Bengyel",
   footer: "15th Anniversary • Budapest, Hungary",
 };
+
+export const vowRenewalLetter2 = {
+  salutation: "Dear Reverend Miller,",
+  body: "We travelled downd memory's lane fifty years, in the blink of an eye.",
+  signature: "Barbara and Shelton Peters",
+  footer: "Oahu, Hawaii",
+}
